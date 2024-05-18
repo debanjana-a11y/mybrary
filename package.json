@@ -1,0 +1,20 @@
+{
+  "name": "mybrary",
+  "version": "1.0.0",
+  "description": "A online library",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server.js",
+    "devStart": "nodemon server.js"
+  },
+  "author": "Debanjanally",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0"
+  }
+}
