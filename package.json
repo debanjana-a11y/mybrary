@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node server.js",
     "devStart": "nodemon server.js",
-    "tailwind:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
+    "tailwind:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",
+    "start": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css && nodemon server.js"
   },
   "author": "Debanjanally",
   "license": "ISC",

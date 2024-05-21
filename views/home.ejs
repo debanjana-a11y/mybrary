@@ -3,12 +3,14 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="<%=url%>/css/output.css" rel="stylesheet">
+		<link href="<%=reqURL%>/css/output.css" rel="stylesheet" />
 		<title>Home</title>
 	</head>
-	<body>
+	<body class="flex h-screen flex-col">
 		<%- include('./partials/header') %>
-		<h1><%= url %></h1>
-        <%- include('./partials/footer') %>
+		<div class="flex-1 bg-top bg-cover bg-[url('../images/bg.jpg')]">
+			<p class="text-yellow-300 text-3xl text-center">Welcome to Mybrary, your personal booklist library</p>
+		</div>
+		<%- include('./partials/footer') %>
 	</body>
 </html>
