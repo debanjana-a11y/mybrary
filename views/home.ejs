@@ -8,8 +8,9 @@
 	</head>
 	<body class="flex h-screen flex-col">
 		<%- include('./partials/header') %>
-		<div class="flex-1 bg-top bg-cover bg-[url('../images/bg.jpg')]">
-			<p class="text-yellow-300 text-3xl text-center">Welcome to Mybrary, your personal booklist library</p>
+		<div class="flex flex-col space-y-10 justify-center items-center flex-1 bg-top bg-cover bg-[url('../images/bg.jpg')]">
+			<p class="text-orange-700 text-6xl text-center font-bold">Welcome to Mybrary, your personal booklist library</p>
+			<button class="focus:outline-none bg-amber-50 px-5 py-2.5 font-bold text-2xl text-cyan-800 border-2 border-solid border-red-300 hover:bg-white hover:text-cyan-900 rounded-lg"><a href="/books">Get Started</a></button>
 		</div>
 		<%- include('./partials/footer') %>
 	</body>
