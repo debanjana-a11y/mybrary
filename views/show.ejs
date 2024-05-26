@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="<%=reqURL%>/css/output.css" rel="stylesheet" />
+		<title>Books</title>
+	</head>
+	<body class="h-screen w-full flex flex-col">
+		<%- include('./partials/header') %>
+		<div class="h-screen w-full bg-gradient-to-b from-gray-300 to-white">
+            <div class="rounded-xl flex flex-col space-y-4 items-start overflow-hidden shadow-lg text-wrap text-center m-10 p-6 bg-slate-300 border border-gray-200 hover:bg-slate-400 cursor-pointer">
+                <h1 class="font-bold text-xl text-cyan-800"><%= books[index].Title %></h1>
+                <div class="flex space-x-4">
+                    <img class="max-h-full object-cover overflow-hidden" src=<%= reqURL + '/images/book' + (index + 1)  + '.png' %> alt="">
+                    <div class="flex flex-col space-y-2">
+                        <div class="flex space-x-2">
+                            <h2>Author:</h2>
+                            <span class="text-lg text-green-800 text-start"><%= books[index].Author %></span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <h2>Genre:</h2>
+                            <span class="text-lg text-green-800 text-start"><%= books[index].Genre %></span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <h2>Page Count:</h2>
+                            <span class="text-lg text-green-800 text-start"><%= books[index].PageCount %></span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <h2>Description:</h2>
+                            <span class="text-lg text-green-800 text-start"><%= books[index].Description %></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="bg-blue-700 hover:bg-blue-800 text-white rounded-lg font-medium text-sm m-10 p-2" href="/books">Back</a>
+		</div>
+		<%- include('./partials/footer') %>
+	</body>
+</html>
