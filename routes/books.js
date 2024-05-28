@@ -32,6 +32,10 @@ router.get('/', (req, res)=> {
     res.render('books', {reqURL: req.protocol + "://" + req.headers.host, books});
 });
 
+router.get('/addbook', async (req, res)=> {
+    res.render('newbook', {reqURL: req.protocol + "://" + req.headers.host, books});
+});
+
 router.get('/:id', (req, res)=> {
     res.render('show', {reqURL: req.protocol + "://" + req.headers.host, books, index: parseInt(req.params.id)});
 });

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="<%=reqURL%>/css/output.css" rel="stylesheet" />
+		<title>New Book</title>
+	</head>
+	<body class="h-screen w-full flex flex-col">
+		<%- include('./partials/header') %>
+		<div
+			class="h-screen w-full bg-gradient-to-r from-sky-300 to-pink-200 flex items-center justify-center">
+			<div
+				class="bg-white w-full lg:h-max lg:w-1/2 mx-auto rounded-lg shadow-xl z-50 overflow-y-auto">
+				<div class="bg-gray-200 py-5 px-8 text-2xl font-bold text-purple-800">
+					Add New Book
+				</div>
+				<div class="p-8">
+					<form
+						action=""
+						method="POST"
+						class="grid grid-cols-4 grid-row-4 gap-4 bg-sky-100 p-5 rounded-lg">
+						<div class="flex flex-col col-span-2 gap-2">
+							<label class="block text-sm font-medium leading-6 text-gray-900">Title</label>
+							<input type="text" name="title" placeholder="Title of Book" />
+						</div>
+						<div class="flex flex-col col-span-2 gap-2">
+							<label class="block text-sm font-medium leading-6 text-gray-900">Author</label>
+							<input
+								type="text"
+								name="author"
+								placeholder="Author Name of Book" />
+						</div>
+
+						<div class="col-span-2">
+							<label
+								for="cover-photo"
+								class="block text-sm font-medium leading-6 text-gray-900"
+								>Cover</label
+							>
+							<div
+								class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+								<div class="text-center">
+									<svg
+										class="mx-auto h-12 w-12 text-gray-300"
+										viewBox="0 0 24 24"
+										fill="currentColor"
+										aria-hidden="true">
+										<path
+											fill-rule="evenodd"
+											d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+											clip-rule="evenodd" />
+									</svg>
+									<div class="mt-4 flex text-sm leading-6 text-gray-600">
+										<label
+											for="file-upload"
+											class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+											<span>Upload a file</span>
+											<input
+												id="file-upload"
+												name="file-upload"
+												type="file"
+												class="sr-only" />
+										</label>
+										<p class="pl-1">or drag and drop</p>
+									</div>
+									<p class="text-xs leading-5 text-gray-600">
+										PNG, JPG, GIF up to 10MB
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="flex flex-col col-span-2 gap-2">
+							<div class="flex flex-col col-span-2 gap-2">
+								<label class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+								<textarea name="description" placeholder="Description of Book"></textarea>
+							</div>
+						
+                            <div class="flex flex-col gap-2">
+                                <label class="block text-sm font-medium leading-6 text-gray-900">Genre</label>
+                                <select id="genre" class="overflow-y-auto">Select Genre 
+                                    <option value="" selected>Drama</option>
+                                    <option value="">Documentary</option>
+                                    <option value="">Mystery</option>
+                                    <option value="">Thriller</option>
+                                    <option value="">Comedy</option>
+                                    <option value="">Fantasy</option>
+                                    <option value="">Classic</option>
+                                    <option value="">Romance</option>
+                                    <option value="">Horror</option>
+                                    <option value="">SciFi</option>
+                                    <option value="">History</option>
+                                    <option value="">Spiritual</option>
+                                    <option value="">Action</option>
+                                    <option value="">Manga</option>
+                                    <option value="">Science</option>
+                                    <option value="">Children</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="block text-sm font-medium leading-6 text-gray-900">Page Count</label>
+                                <input
+                                    type="text"
+                                    name="page count"
+                                    placeholder="Page Count of Book" />
+                            </div>
+						</div>
+					</form>
+				</div>
+				<ul class="bg-gray-100 py-5 px-8 text-lg flex justify-end space-x-2">
+					<li>
+						<button
+							class="w-20 bg-amber-500 text-white p-2 mx-2 rounded-lg hover:bg-yellow-800">
+							Cancel
+						</button>
+					</li>
+					<li>
+						<button
+							class="w-20 bg-green-800 text-white p-2 mx-2 rounded-lg hover:bg-green-900">
+							Submit
+						</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<%- include('./partials/footer') %>
+	</body>
+</html>
