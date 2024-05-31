@@ -5,6 +5,8 @@ const booksRouter = require('./routes/books');
 const authorsRouter = require('./routes/authors');
 const redirectRouter = require('./routes/redirect');
 const path = require("path");
+const mongoose = require('mongoose');
+require('dotenv').config()
 
 PORT = process.env.PORT ?? 3000;
 
@@ -20,3 +22,11 @@ app.use('/', homeRouter);
 app.use('/books', booksRouter);
 app.use('/authors', authorsRouter);
 app.use('*', redirectRouter);
+
+mongoose.connect(process.env.DATABASE_URL)
+    .then(() => {
+    console.log('Database connection successful');
+    })
+    .catch((err) => {
+    console.error('Database connection error ' + err);
+});

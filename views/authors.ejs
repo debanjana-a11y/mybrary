@@ -6,9 +6,26 @@
 		<link href="<%=reqURL%>/css/output.css" rel="stylesheet">
 		<title>Authors</title>
 	</head>
-	<body>
+	<body class="min-h-screen flex flex-col">
 		<%- include('./partials/header') %>
-		<h1><%= name %></h1>
+		<div class="flex-1 flex items-center justify-center bg-gradient-to-b from-orange-100 to-green-200">
+			<table class="w-1/2 bg-pink-200 mx-auto rounded-lg shadow-xl">
+				<thead class="bg-gray-200 py-5 px-8 text-2xl font-bold text-purple-800">
+					<tr>
+						<th>Author Name</th>
+						<th>Number of Books</th>
+					</tr>
+				</thead>
+				<tbody class="m-8">
+					<% for (const author of authors) { %>
+						<tr>
+							<td><%= author %></td>
+							<td>400</td>
+						</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
 		<%- include('./partials/footer') %>
 	</body>
 </html>

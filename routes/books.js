@@ -1,7 +1,8 @@
 const express = require('express');
+const booksDB = require('../model/books');
 const router = express.Router();
 
-books = [
+const books = [
     {
         "Title" : "And Then There Were None",
         "Author" : "Agatha Christie",
@@ -28,8 +29,22 @@ books = [
     }
 ];
 
-router.get('/', (req, res)=> {
-    res.render('books', {reqURL: req.protocol + "://" + req.headers.host, books});
+const addBookTodb = async (books) => {
+    try {
+        for (const book of books) {
+            bookToAdd = new booksDB(book);
+            await bookToAdd.save();
+        }
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+addBookTodb(books);
+
+router.get('/', async (req, res)=> {
+    const bookList = await booksDB.find({});
+    res.render('books', {reqURL: req.protocol + "://" + req.headers.host, books: bookList});
 });
 
 router.get('/addbook', async (req, res)=> {

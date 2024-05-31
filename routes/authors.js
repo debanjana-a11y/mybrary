@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res)=> {
-    res.render('authors', {reqURL: req.protocol + "://" + req.headers.host,
-                           name: "Rabindranath Tagore"});
+authorList = ['Agatha Christie', 'Margaret Atwood', 'Maggie Stiefvater'];
+
+router.get('/', (req, res) => {
+	res.render('authors', {
+		reqURL: req.protocol + '://' + req.headers.host,
+		authors: authorList,
+	});
 });
 
 module.exports = router;
