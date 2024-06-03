@@ -17,18 +17,27 @@
 				</div>
 				<div class="p-8">
 					<form
-						action=""
+						action="/books"
 						method="POST"
 						class="grid grid-cols-4 grid-row-4 gap-4 bg-sky-100 p-5 rounded-lg">
 						<div class="flex flex-col col-span-2 gap-2">
-							<label class="block text-sm font-medium leading-6 text-gray-900">Title</label>
-							<input type="text" name="title" placeholder="Title of Book" />
+							<label class="block text-sm font-medium leading-6 text-gray-900"
+								>Title</label
+							>
+							<input
+								class="px-2"
+								type="text"
+								name="Title"
+								placeholder="Title of Book" />
 						</div>
 						<div class="flex flex-col col-span-2 gap-2">
-							<label class="block text-sm font-medium leading-6 text-gray-900">Author</label>
+							<label class="block text-sm font-medium leading-6 text-gray-900"
+								>Author</label
+							>
 							<input
+								class="px-2"
 								type="text"
-								name="author"
+								name="Author"
 								placeholder="Author Name of Book" />
 						</div>
 
@@ -58,7 +67,7 @@
 											<span>Upload a file</span>
 											<input
 												id="file-upload"
-												name="file-upload"
+												name="Image"
 												type="file"
 												class="sr-only" />
 										</label>
@@ -73,55 +82,67 @@
 
 						<div class="flex flex-col col-span-2 gap-2">
 							<div class="flex flex-col col-span-2 gap-2">
-								<label class="block text-sm font-medium leading-6 text-gray-900">Description</label>
-								<textarea name="description" placeholder="Description of Book"></textarea>
+								<label class="block text-sm font-medium leading-6 text-gray-900"
+									>Description</label
+								>
+								<textarea
+									class="px-2"
+									name="Description"
+									placeholder="Description of Book"></textarea>
 							</div>
-						
-                            <div class="flex flex-col gap-2">
-                                <label class="block text-sm font-medium leading-6 text-gray-900">Genre</label>
-                                <select id="genre" class="overflow-y-auto">Select Genre 
-                                    <option value="" selected>Drama</option>
-                                    <option value="">Documentary</option>
-                                    <option value="">Mystery</option>
-                                    <option value="">Thriller</option>
-                                    <option value="">Comedy</option>
-                                    <option value="">Fantasy</option>
-                                    <option value="">Classic</option>
-                                    <option value="">Romance</option>
-                                    <option value="">Horror</option>
-                                    <option value="">SciFi</option>
-                                    <option value="">History</option>
-                                    <option value="">Spiritual</option>
-                                    <option value="">Action</option>
-                                    <option value="">Manga</option>
-                                    <option value="">Science</option>
-                                    <option value="">Children</option>
-                                </select>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <label class="block text-sm font-medium leading-6 text-gray-900">Page Count</label>
-                                <input
-                                    type="text"
-                                    name="page count"
-                                    placeholder="Page Count of Book" />
-                            </div>
+
+							<div class="flex flex-col gap-2">
+								<label class="block text-sm font-medium leading-6 text-gray-900"
+									>Genre</label
+								>
+								<select name="Genre" id="genre" class="overflow-y-auto">
+									<option value="Drama" selected>Drama</option>
+									<option value="Documentary">Documentary</option>
+									<option value="Mystery">Mystery</option>
+									<option value="Thriller">Thriller</option>
+									<option value="Comedy">Comedy</option>
+									<option value="Fantasy">Fantasy</option>
+									<option value="Classic">Classic</option>
+									<option value="Romance">Romance</option>
+									<option value="Horror">Horror</option>
+									<option value="SciFi">SciFi</option>
+									<option value="History">History</option>
+									<option value="Spiritual">Spiritual</option>
+									<option value="Action">Action</option>
+									<option value="Manga">Manga</option>
+									<option value="Science">Science</option>
+									<option value="Children">Children</option>
+								</select>
+							</div>
+							<div class="flex flex-col gap-2">
+								<label class="block text-sm font-medium leading-6 text-gray-900"
+									>Page Count</label
+								>
+								<input
+									class="px-2"
+									type="text"
+									name="PageCount"
+									placeholder="Page Count of Book" />
+							</div>
+						</div>
+
+						<div
+							class="col-span-4 py-5 px-8 text-lg flex justify-center space-x-2">
+							<a
+								href="/books/newbook"
+								class="w-20 bg-amber-500 text-center text-white p-2 mx-2 rounded-lg hover:bg-yellow-800"
+								>Cancel</a
+							>
+							<a
+								><button
+									type="submit"
+									class="w-20 bg-green-600 text-center text-white p-2 mx-2 rounded-lg hover:bg-green-900">
+									Submit
+								</button></a
+							>
 						</div>
 					</form>
 				</div>
-				<ul class="bg-gray-100 py-5 px-8 text-lg flex justify-end space-x-2">
-					<li>
-						<button
-							class="w-20 bg-amber-500 text-white p-2 mx-2 rounded-lg hover:bg-yellow-800">
-							Cancel
-						</button>
-					</li>
-					<li>
-						<button
-							class="w-20 bg-green-800 text-white p-2 mx-2 rounded-lg hover:bg-green-900">
-							Submit
-						</button>
-					</li>
-				</ul>
 			</div>
 		</div>
 		<%- include('./partials/footer') %>

@@ -6,6 +6,8 @@ const authorsRouter = require('./routes/authors');
 const redirectRouter = require('./routes/redirect');
 const path = require("path");
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override')
 require('dotenv').config()
 
 PORT = process.env.PORT ?? 3000;
@@ -17,6 +19,8 @@ app.listen(PORT, ()=> {
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
 app.use('/', homeRouter);
 app.use('/books', booksRouter);
