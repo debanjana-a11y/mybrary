@@ -590,12 +590,24 @@ video {
   z-index: 50;
 }
 
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
 
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
 .col-span-4 {
   grid-column: span 4 / span 4;
+}
+
+.col-start-2 {
+  grid-column-start: 2;
 }
 
 .m-10 {
@@ -652,6 +664,10 @@ video {
   height: 75%;
 }
 
+.h-4\/5 {
+  height: 80%;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -674,6 +690,10 @@ video {
 
 .w-20 {
   width: 5rem;
+}
+
+.w-3\/4 {
+  width: 75%;
 }
 
 .w-full {
@@ -764,6 +784,10 @@ video {
 
 .self-center {
   align-self: center;
+}
+
+.justify-self-end {
+  justify-self: end;
 }
 
 .justify-self-center {
@@ -943,9 +967,9 @@ video {
   background-position: top;
 }
 
-.object-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .p-2 {

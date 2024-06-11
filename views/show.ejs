@@ -9,10 +9,10 @@
 	<body class="h-screen w-full flex flex-col">
 		<%- include('./partials/header') %>
 		<div class="h-screen w-full bg-gradient-to-b from-gray-300 to-white">
-            <div class="rounded-xl flex flex-col space-y-4 items-start overflow-hidden shadow-lg text-wrap text-center m-10 p-6 bg-slate-300 border border-gray-200 hover:bg-slate-400 cursor-pointer">
-                <div class="w-full flex justify-between">
-                    <h1 class="font-bold text-xl text-cyan-800"><%= book.Title %></h1>
-                    <ul class="flex space-x-2">
+            <div class="h-4/5 rounded-xl flex flex-col space-y-4 items-start overflow-hidden shadow-lg text-wrap text-center m-10 p-6 bg-slate-300 border border-gray-200 hover:bg-slate-400 cursor-pointer">
+                <div class="w-full grid grid-cols-4">
+                    <h1 class="font-bold text-xl text-cyan-800 self-center"><%= book.Title %></h1>
+                    <ul class="col-span-3 flex justify-self-end">
                         <li><button class="w-20 bg-blue-700 text-white p-2 mx-2 rounded-lg hover:bg-blue-800">Edit</button></li>
                         <li>
                             <form method="POST" action="?_method=DELETE">
@@ -22,9 +22,9 @@
                         </li>
                     </ul>
                 </div>
-                <div class="flex space-x-4">
-                    <img class="w-1/2 max-h-full object-cover overflow-hidden" src=<%= reqURL + '/images/' + book.Image %> alt="">
-                    <div class="flex flex-col space-y-2">
+                <div class="w-full flex-1 grid grid-cols-4 space-x-4">
+                    <img class="w-3/4 col-span-1 justify-self-center self-center max-h-full object-contain" src=<%= reqURL + '/images/' + book.Image %> alt="">
+                    <div class="col-start-2 col-span-3 flex flex-col space-y-2">
                         <div class="flex space-x-2">
                             <h2>Author:</h2>
                             <span class="text-lg text-green-800 text-start"><%= book.Author %></span>
