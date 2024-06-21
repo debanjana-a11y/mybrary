@@ -100,7 +100,9 @@ router.delete('/:id', async (req, res) => {
 });
 
 router.get('/newbook', async (req, res) => {
-	res.render('newbook', { reqURL: req.protocol + '://' + req.headers.host });
+	res.render('bookForm', { reqURL: req.protocol + '://' + req.headers.host,
+		action: "Add"
+	 });
 });
 
 router.get('/:id', async (req, res) => {
@@ -114,5 +116,41 @@ router.get('/:id', async (req, res) => {
 		book: book,
 	});
 });
+
+router.get('/editbook/:id', async (req, res) => {
+	const book = await booksDB.findById(req.params.id).exec();
+	if (book === null) {
+		res.redirect('/');
+		return;
+	}
+	res.render('bookForm', { reqURL: req.protocol + '://' + req.headers.host,
+		book: book,
+		action: "Edit"
+	 });
+});		
+
+router.put('/:id', async (req, res) => {
+	const book = await booksDB.findById(req.params.id).exec();
+	if (book === null) {
+		res.redirect('/');
+		return;
+	}
+	let updatedBook = await booksDB.update({ _id: req.params.id },
+		{
+			Title : req.params.Title,
+			Author : req.params.Author,
+			Genre : req.params.Genre,
+			PageCount : req.params.PageCount,
+			Description : req.params.Description
+		});
+	console.log("Updated Book :" + JSON.stringify(updatedBook));
+
+
+	const bookList = await booksDB.find({});
+	res.render('books', {
+		reqURL: req.protocol + '://' + req.headers.host,
+		books: bookList,
+	});
+});	
 
 module.exports = router;

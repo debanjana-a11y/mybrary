@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="<%=reqURL%>/css/output.css" rel="stylesheet" />
-		<title>New Book</title>
+		<title><%= action %> Book</title>
 	</head>
 	<body class="h-screen w-full flex flex-col">
 		<%- include('./partials/header') %>
@@ -13,32 +13,50 @@
 			<div
 				class="bg-white w-full lg:h-max lg:w-1/2 mx-auto rounded-lg shadow-xl z-50 overflow-y-auto">
 				<div class="bg-gray-200 py-5 px-8 text-2xl font-bold text-purple-800">
-					Add New Book
+					<%= action %> Book
 				</div>
 				<div class="p-8">
-					<form
-						action="/books"
-						method="POST"
-						class="grid grid-cols-4 grid-row-4 gap-4 bg-sky-100 p-5 rounded-lg">
+				<% if (action == "Edit") { %>
+					<form method="POST" action="/books" action="?_method=PUT" class="grid grid-cols-4 grid-row-4 gap-4 bg-sky-100 p-5 rounded-lg">
+						<input type="hidden" name="_method" value="PUT">
+				<% } else { %>
+					<form action="/books" method="POST" class="grid grid-cols-4 grid-row-4 gap-4 bg-sky-100 p-5 rounded-lg">
+				<% } %>
 						<div class="flex flex-col col-span-2 gap-2">
 							<label class="block text-sm font-medium leading-6 text-gray-900"
 								>Title</label
 							>
+							<% if (action == "Edit") { %>
+							<input
+								class="px-2"
+								type="text"
+								name="Title"
+								value="<%= book.Title %>" />
+							<% } else { %>
 							<input
 								class="px-2"
 								type="text"
 								name="Title"
 								placeholder="Title of Book" />
+							<% } %>
 						</div>
 						<div class="flex flex-col col-span-2 gap-2">
 							<label class="block text-sm font-medium leading-6 text-gray-900"
 								>Author</label
 							>
+							<% if (action == "Edit") { %>
+							<input
+								class="px-2"
+								type="text"
+								name="Author"
+								value="<%= book.Author %>" />
+							<% } else { %>
 							<input
 								class="px-2"
 								type="text"
 								name="Author"
 								placeholder="Author Name of Book" />
+							<% } %>
 						</div>
 
 						<div class="col-span-2">
@@ -61,17 +79,17 @@
 											clip-rule="evenodd" />
 									</svg>
 									<div class="mt-4 flex text-sm leading-6 text-gray-600">
-											<label
-												for="file-upload"
-												class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-												<span>Upload a file</span>
-												<input
-													id="file-upload"
-													name="Image"
-													type="file"
-													class="sr-only" />
-											</label>
-											<p class="pl-1">or drag and drop</p>
+										<label
+											for="file-upload"
+											class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+											<span>Upload a file</span>
+											<input
+												id="file-upload"
+												name="Image"
+												type="file"
+												class="sr-only" />
+										</label>
+										<p class="pl-1">or drag and drop</p>
 									</div>
 									<p class="text-xs leading-5 text-gray-600">
 										PNG, JPG, GIF up to 10MB
@@ -85,10 +103,18 @@
 								<label class="block text-sm font-medium leading-6 text-gray-900"
 									>Description</label
 								>
+								<% if (action == "Edit") { %>
 								<textarea
 									class="px-2"
 									name="Description"
+									><%= book.Description %></textarea>
+								<% } else { %>
+								<textarea
+									class="px-2"
+									type="text"
+									name="Author"
 									placeholder="Description of Book"></textarea>
+								<% } %>
 							</div>
 
 							<div class="flex flex-col gap-2">
@@ -118,18 +144,26 @@
 								<label class="block text-sm font-medium leading-6 text-gray-900"
 									>Page Count</label
 								>
+								<% if (action == "Edit") { %>
+								<input
+									class="px-2"
+									type="text"
+									name="PageCount"
+									value="<%= book.PageCount %>" />
+								<% } else { %>
 								<input
 									class="px-2"
 									type="text"
 									name="PageCount"
 									placeholder="Page Count of Book" />
+								<% } %>
 							</div>
 						</div>
 
 						<div
 							class="col-span-4 py-5 px-8 text-lg flex justify-center space-x-2">
 							<a
-								href="/books/newbook"
+								href="/books"
 								class="w-20 bg-amber-500 text-center text-white p-2 mx-2 rounded-lg hover:bg-yellow-800"
 								>Cancel</a
 							>

@@ -13,7 +13,7 @@
                 <div class="w-full grid grid-cols-4">
                     <h1 class="font-bold text-xl text-cyan-800 self-center"><%= book.Title %></h1>
                     <ul class="col-span-3 flex justify-self-end">
-                        <li><button class="w-20 bg-blue-700 text-white p-2 mx-2 rounded-lg hover:bg-blue-800">Edit</button></li>
+                        <li><button class="w-20 bg-blue-700 text-white p-2 mx-2 rounded-lg hover:bg-blue-800"><a href=<%= '/books/editbook/' + book._id %>>Edit</a></button></li>
                         <li>
                             <form method="POST" action="?_method=DELETE">
                                 <input type="hidden" name="_method" value="DELETE">
