@@ -129,22 +129,23 @@ router.get('/editbook/:id', async (req, res) => {
 	 });
 });		
 
-router.put('/:id', async (req, res) => {
+router.put('/editbook/:id', async (req, res) => {
 	const book = await booksDB.findById(req.params.id).exec();
 	if (book === null) {
 		res.redirect('/');
 		return;
 	}
-	let updatedBook = await booksDB.update({ _id: req.params.id },
+	let updatedBook = await booksDB.findOneAndUpdate({ _id: req.params.id },
 		{
-			Title : req.params.Title,
-			Author : req.params.Author,
-			Genre : req.params.Genre,
-			PageCount : req.params.PageCount,
-			Description : req.params.Description
-		});
-	console.log("Updated Book :" + JSON.stringify(updatedBook));
-
+			Title : req.body.Title,
+			Author : req.body.Author,
+			Genre : req.body.Genre,
+			PageCount : req.body.PageCount,
+			Description : req.body.Description
+		},
+		{returnOriginal: false}
+	);
+	console.debug("Updated Book :" + JSON.stringify(updatedBook));
 
 	const bookList = await booksDB.find({});
 	res.render('books', {

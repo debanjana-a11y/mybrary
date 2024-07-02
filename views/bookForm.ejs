@@ -17,7 +17,7 @@
 				</div>
 				<div class="p-8">
 				<% if (action == "Edit") { %>
-					<form method="POST" action="/books" action="?_method=PUT" class="grid grid-cols-4 grid-row-4 gap-4 bg-sky-100 p-5 rounded-lg">
+					<form method="POST" action="?_method=PUT" class="grid grid-cols-4 grid-row-4 gap-4 bg-sky-100 p-5 rounded-lg">
 						<input type="hidden" name="_method" value="PUT">
 				<% } else { %>
 					<form action="/books" method="POST" class="grid grid-cols-4 grid-row-4 gap-4 bg-sky-100 p-5 rounded-lg">
@@ -112,7 +112,7 @@
 								<textarea
 									class="px-2"
 									type="text"
-									name="Author"
+									name="Description"
 									placeholder="Description of Book"></textarea>
 								<% } %>
 							</div>
