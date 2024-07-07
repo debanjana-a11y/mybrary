@@ -122,22 +122,11 @@
 									>Genre</label
 								>
 								<select name="Genre" id="genre" class="overflow-y-auto">
-									<option value="Drama" selected>Drama</option>
-									<option value="Documentary">Documentary</option>
-									<option value="Mystery">Mystery</option>
-									<option value="Thriller">Thriller</option>
-									<option value="Comedy">Comedy</option>
-									<option value="Fantasy">Fantasy</option>
-									<option value="Classic">Classic</option>
-									<option value="Romance">Romance</option>
-									<option value="Horror">Horror</option>
-									<option value="SciFi">SciFi</option>
-									<option value="History">History</option>
-									<option value="Spiritual">Spiritual</option>
-									<option value="Action">Action</option>
-									<option value="Manga">Manga</option>
-									<option value="Science">Science</option>
-									<option value="Children">Children</option>
+									<% var genrelist = ["Drama", "Documentary", "Mystery", "Thriller", "Comedy", "Fantasy", "Classic", "Romance", "Horror", "SciFi", "History", "Spiritual", "Action", "Manga", "Science", "Children"]; %>
+									<% for(var i=0; i < genrelist.length; i++) { %>
+										<% var isSelected = (genrelist[i] == book.Genre)? "selected" : ""; %>
+										<option value="<%= genrelist[i] %>" <%= isSelected %>><%= genrelist[i] %></option>
+									 <% } %>
 								</select>
 							</div>
 							<div class="flex flex-col gap-2">
