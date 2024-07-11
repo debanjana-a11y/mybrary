@@ -124,7 +124,10 @@
 								<select name="Genre" id="genre" class="overflow-y-auto">
 									<% var genrelist = ["Drama", "Documentary", "Mystery", "Thriller", "Comedy", "Fantasy", "Classic", "Romance", "Horror", "SciFi", "History", "Spiritual", "Action", "Manga", "Science", "Children"]; %>
 									<% for(var i=0; i < genrelist.length; i++) { %>
-										<% var isSelected = (genrelist[i] == book.Genre)? "selected" : ""; %>
+										<% var isSelected = "" %>
+										<% if (action == "Edit") { %>
+											<% isSelected = (genrelist[i] == book.Genre)? "selected" : ""; %>
+										<% } %>
 										<option value="<%= genrelist[i] %>" <%= isSelected %>><%= genrelist[i] %></option>
 									 <% } %>
 								</select>
