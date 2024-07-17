@@ -13,5 +13,9 @@ const bookSchema = new Schema({
     "Image": String
 });
 
+bookSchema.virtual('cover').get(function() {
+    return `data:image/png;base64,${this.Image}`;
+});
+
 // It is like adding a table/collection to a database which is connected via mongoose.connect
 module.exports = mongoose.model('bookCollection', bookSchema);

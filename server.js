@@ -19,7 +19,7 @@ app.listen(PORT, ()=> {
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 app.use(methodOverride('_method'));
 
 app.use('/', homeRouter);
