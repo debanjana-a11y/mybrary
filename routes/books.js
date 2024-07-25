@@ -1,6 +1,7 @@
 const express = require('express');
 const booksDB = require('../model/books');
 const router = express.Router();
+const fs = require('fs');
 
 const books = [
 	{
@@ -29,12 +30,16 @@ const books = [
     }
 ];
 
+let defaultName = 'default-cover.jpg';
+
 const addBookTodb = async (books) => {
 	try {
 		for (const book of books) {
-            if (book.hasOwnProperty("Image") == false) {
-                book["Image"] = 'default-cover.jpg';
+			let coverName = defaultName;
+            if (book.hasOwnProperty("Image")) {
+				coverName = book["Image"];
 			}
+			book.Image = fs.readFileSync(__dirname + '/../public/images/' + coverName, 'base64');
 			bookToAdd = new booksDB(book);
 			console.log(await bookToAdd.save());
 		}
@@ -59,19 +64,18 @@ router.post('/', async (req, res) => {
 			PageCount: reqBody.PageCount,
 			Genre: reqBody.Genre,
 			Description: reqBody.Description,
-			Image: reqBody.Image ? reqBody.Image : 'default-cover.jpg',
+			Image: reqBody.Image ? reqBody.Image : ''
 		});
-		const ret = await addBook.save();
-		console.log(ret);
 
 		if (reqBody.Image) {
-            console.log("Here");
-			fileUpload();
+			const cover = JSON.parse(reqBody.Image);
+			addBook.Image = cover.data;
+		} else {
+			addBook.Image = fs.readFileSync(__dirname + '/../public/images/' + defaultName, 'base64');
 		}
 
+		const ret = await addBook.save();
 		res.redirect('/books');
-		// const bookList = await booksDB.find({});
-		// res.render('books', {reqURL: req.protocol + "://" + req.headers.host, books: bookList});
 	} catch (error) {
 		console.error('Failed to add book, reason :: ' + error);
 		res.redirect('/books');
@@ -135,23 +139,29 @@ router.put('/editbook/:id', async (req, res) => {
 		res.redirect('/');
 		return;
 	}
+	// Save Cover
+	if (req.body.Image != null && req.body.Image != undefined && req.body.Image != "") {
+		const encodedCover = JSON.parse(req.body.Image);
+		book.Image = encodedCover.data;
+	}
 	let updatedBook = await booksDB.findOneAndUpdate({ _id: req.params.id },
 		{
 			Title : req.body.Title,
 			Author : req.body.Author,
 			Genre : req.body.Genre,
 			PageCount : req.body.PageCount,
-			Description : req.body.Description
+			Description : req.body.Description,
+			Image: book.Image
 		},
 		{returnOriginal: false}
 	);
-	console.debug("Updated Book :" + JSON.stringify(updatedBook));
+	// console.debug("Updated Book :" + JSON.stringify(updatedBook));
 
 	const bookList = await booksDB.find({});
 	res.render('books', {
 		reqURL: req.protocol + '://' + req.headers.host,
 		books: bookList,
 	});
-});	
+});
 
 module.exports = router;
